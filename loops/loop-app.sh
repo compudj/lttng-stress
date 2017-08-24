@@ -1,6 +1,8 @@
 #!/bin/bash
 
+dir=$(dirname $0)
+hello_path=${dir}/../bin/hello/hello
+
 for a in $(seq 1 1000000); do
-	# TODO: run an hello program modified to trace 10000 events.
-	~/git/lttng-ust/tests/hello/hello
+	${hello_path}
 done
