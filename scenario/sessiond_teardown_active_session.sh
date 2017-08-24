@@ -53,7 +53,7 @@ function app_generator()
 	trap "exit 0" SIGINT SIGTERM
 	while :
 	do
-		${HELLO_PATH} 10 1> /dev/null 2>/dev/null
+		${HELLO_PATH} 10 1> /dev/null
 	done
 }
 
@@ -73,6 +73,10 @@ function stop_lttng_sessiond ()
 		sleep 0.5
 	done
 }
+
+if [[ ! -e ${HELLO_PATH} ]]; then
+	echo "Error: Make sure to build test application from bin/"
+fi
 
 for (( i = 0; i < 100; i++ )); do
 	app_generator &
